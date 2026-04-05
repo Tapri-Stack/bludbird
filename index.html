@@ -28,7 +28,7 @@
             /* overflow: hidden; */
         }
 
-        .bird-box {
+        #bird-box {
             width: 400px;
             height: 400px;
             cursor: pointer;
@@ -93,25 +93,59 @@
             stroke: white;
             stroke-width: 1.5;
         }
+
+        #surprise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
     </style>
 </head>
 
 <body>
-
     <script>
+        const prepareSurprise = () => {
+            const surprise = document.getElementById("surprise")
+            const audio = new Audio("https://www.myinstants.com/media/sounds/echo3b.mp3")
+            audio.currentTime = 0
+            audio.addEventListener("ended", () => {
+                surprise.style.backgroundImage = "";
+            })
+
+            setTimeout(() => {
+                surprise.style.backgroundImage = "url('https://static.wikia.nocookie.net/villains/images/1/1b/Troodontid.jpg')";
+                audio.play()
+            }, 2500 + Math.floor(Math.random() * 1e10))
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             // Using the correct escape sequences directly in the string
             const message = "T\u0337\u033f\u0346\u0315\u030e\u0342\u033e\u0313\u0301\u0314\u0329\u035c\u0318\u033b\u032eh\u0338\u0344\u030c\u0313\u030d\u0302\u033c\u031c\u032d\u0321\u0332\u0355\u0359\u0359\u031f\u0332\u032d\u034e\u032b\u035ce\u0335\u0309\u0352\u0311\u0312\u0300\u0315\u0342\u0312\u0315\u030c\u0306\u033f\u0324\u0332\u0347\u032e\u0319\u032b\u0318 \u0336\u0312\u0307\u0310\u0302\u0310\u033b\u0354\u0356\u0322\u032a\u034e\u033b\u0355\u0333b\u0334\u0352\u035d\u0306\u0341\u0340\u034a\u030e\u031e\u0323\u035a\u032f\u0322\u032b\u034ei\u0338\u0350\u0300\u033e\u030c\u0352\u030b\u0312\u0360\u033d\u030f\u035d\u0354\u034e\u034d\u0326\u0353\u032b\u0355\u031d\u0316\u031e\u032b\u032e\u035cr\u0338\u0300\u0351\u0308\u0300\u033a\u0359\u0321\u0348\u031f\u0327\u032d\u032a\u0328\u0339\u032c\u0323\u0326\u032b\u032cd\u0338\u0308\u0341\u031b\u0343\u0309\u0311\u031b\u0307\u0352\u0346\u0353\u0323\u035c\u0354\u032a \u0336\u033d\u0350\u0321\u033c\u0322\u0339\u0316n\u0337\u0315\u0351\u033e\u030c\u033e\u0352\u033e\u0340\u0351\u034a\u0346\u0312\u033f\u032be\u0338\u0351\u0356e\u0334\u030e\u0313\u0350\u035b\u030d\u0311\u035d\u0300\u0351\u033b\u031d\u0324d\u0334\u0358\u0341\u0344\u030f\u0303\u030b\u0344\u030e\u0306\u0344\u030e\u0306\u0309\u0340\u0345\u0359\u0327\u0356\u0317s\u0338\u0346\u033b\u032d\u0355\u0318\u0322\u034d\u0322\u033b\u032b\u031c \u0338\u0360\u0359\u031d\u0348\u032c\u0355\u031e\u0321\u031c\u0323\u0331\u0349\u031c\u0330\u0318b\u0335\u0303\u030d\u0357\u0352\u0322\u0331\u0318\u0332\u033al\u0336\u0301\u030d\u033e\u0342\u0310\u0344\u0302\u0308\u0312\u0300\u0322\u0333\u0317\u0316\u0325\u032f\u034e\u0317o\u0335\u0309\u0312\u0307\u0317\u032a\u0319\u0345\u0355\u032a\u0323\u0324\u0333\u032d\u0347\u0354\u033a\u035ao\u0338\u030d\u0341\u0343\u030e\u034b\u030d\u031b\u0304\u035d\u0357\u0305\u0310\u0347\u0321d\u0335\u033f\u035d\u0304\u033d\u0347\u0329\u0345\u031d\u032f\u0316\u032c\u0321";
 
             document.getElementById("root").textContent = message;
+
+            disturbed = false
+            document.getElementById("bird-box").addEventListener("mouseenter", (e) => {
+                if (!disturbed) {
+                    disturbed = true
+                    e.target.querySelector("svg").classList.add("is-flying")
+                    prepareSurprise()
+                }
+            })
         });
     </script>
 
+    <div id="surprise"></div>
     <div id="box">
         <div id="root"></div>
     </div>
 
-    <div class="bird-box" onmouseenter="this.querySelector('svg').classList.add('is-flying')">
+    <div id="bird-box">
         <svg class="bird-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 40 C65 40, 75 55, 50 75 C25 55, 35 40, 50 40 Z" fill="#ca0818" />
 
