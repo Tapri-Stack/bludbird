@@ -110,7 +110,7 @@
             transform: scaleY(0);
             transform-origin: top;
             will-change: transform;
-            transition-property: transform, opacity;
+            transition-timing-function: cubic-bezier(0.5, 0, 0.5, 1.0) !important;
         }
 
         .s1 {
@@ -203,20 +203,13 @@
 
     <svg id="blood-streaks" viewBox="0 0 1000 1000" preserveAspectRatio="none" shape-rendering="geometricPrecision"
         xmlns="http://www.w3.org/2000/svg">
-        <path class="streak s1 black-cursor" d="M100,0 L130,0 Q115,400 115,800 L110,800 Q110,400 100,0"
-            fill="#660000" />
-        <path class="streak s2 black-cursor" class="black-cursor"
-            d="M500,0 L540,0 Q520,300 520,700 L515,700 Q515,300 500,0" fill="#880808" />
-        <path class="streak s3 black-cursor" d="M850,0 L870,0 Q860,500 860,950 L855,950 Q855,500 850,0"
-            fill="#440000" />
-        <path class="streak s4 black-cursor" d="M250,0 L265,0 Q257,200 257,500 L253,500 Q253,200 250,0"
-            fill="#770505" />
-        <path class="streak s5 black-cursor" d="M400,0 L415,0 Q407,600 407,900 L403,900 Q403,600 400,0"
-            fill="#550000" />
-        <path class="streak s6 black-cursor" d="M680,0 L700,0 Q690,450 690,750 L685,750 Q685,450 680,0"
-            fill="#990a0a" />
-        <path class="streak s7 black-cursor" d="M920,0 L930,0 Q925,150 925,400 L922,400 Q922,150 920,0"
-            fill="#600000" />
+        <path class="streak s1 black-cursor" d="M100,0 L110,0 L108,750 Q108,720 105,720 Q102,720 102,700 Z" fill="#660000" />
+        <path class="streak s2 black-cursor" d="M500,0 L508,0 L506,700 Q506,670 504,670 Q502,670 502,650 Z" fill="#880808" />
+        <path class="streak s3 black-cursor" d="M850,0 L855,0 L854,990 Q854,960 852,960 Q850,960 850,940 Z" fill="#440000" />
+        <path class="streak s4 black-cursor" d="M250,0 L262,0 L260,500 Q260,475 256,475 Q252,475 252,450 Z" fill="#770505" />
+        <path class="streak s5 black-cursor" d="M400,0 L408,0 L407,1000 Q407,960 404,960 Q401,960 401,940 Z" fill="#550000" />
+        <path class="streak s6 black-cursor" d="M680,0 L690,0 L688,850 Q688,725 685,725 Q682,725 682,700 Z" fill="#990a0a" />
+        <path class="streak s7 black-cursor" d="M920,0 L928,0 L926,450 Q926,370 924,370 Q922,370 922,350 Z" fill="#600000" />
     </svg>
     <script>
         const prepareSurprise = () => {
