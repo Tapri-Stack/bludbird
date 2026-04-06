@@ -192,39 +192,47 @@
     </div>
     <svg id="blood-wrapper" class="black-cursor" viewBox="0 0 1000 1000" preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,1000 L1000,1000 L1000,150 
-        C950,150 920,50 880,120 
-        C840,190 800,20 750,100 
-        C700,180 650,0 580,80 
-        S450,0 380,100 
-        C300,200 250,20 180,100 
+        <path d="M0,1000 L1000,1000 L1000,150
+        C950,150 920,50 880,120
+        C840,190 800,20 750,100
+        C700,180 650,0 580,80
+        S450,0 380,100
+        C300,200 250,20 180,100
         C120,180 80,50 0,150 Z" fill="#880808" />
     </svg>
 
     <svg id="blood-streaks" viewBox="0 0 1000 1000" preserveAspectRatio="none" shape-rendering="geometricPrecision"
         xmlns="http://www.w3.org/2000/svg">
-        <path class="streak s1 black-cursor" d="M100,0 L110,0 L108,750 Q108,720 105,720 Q102,720 102,700 Z" fill="#660000" />
-        <path class="streak s2 black-cursor" d="M500,0 L508,0 L506,700 Q506,670 504,670 Q502,670 502,650 Z" fill="#880808" />
-        <path class="streak s3 black-cursor" d="M850,0 L855,0 L854,990 Q854,960 852,960 Q850,960 850,940 Z" fill="#440000" />
-        <path class="streak s4 black-cursor" d="M250,0 L262,0 L260,500 Q260,475 256,475 Q252,475 252,450 Z" fill="#770505" />
-        <path class="streak s5 black-cursor" d="M400,0 L408,0 L407,1000 Q407,960 404,960 Q401,960 401,940 Z" fill="#550000" />
-        <path class="streak s6 black-cursor" d="M680,0 L690,0 L688,850 Q688,725 685,725 Q682,725 682,700 Z" fill="#990a0a" />
-        <path class="streak s7 black-cursor" d="M920,0 L928,0 L926,450 Q926,370 924,370 Q922,370 922,350 Z" fill="#600000" />
+        <path class="streak s1 black-cursor" d="M100,0 L130,0 Q115,400 115,790 Q115,800 112.5,805 Q110,800 110,790 Q110,400 100,0"
+            fill="#660000" />
+        <path class="streak s2 black-cursor"
+            d="M500,0 L540,0 Q520,300 520,690 Q520,700 517.5,705 Q515,700 515,690 Q515,300 500,0" fill="#880808" />
+        <path class="streak s3 black-cursor" d="M850,0 L870,0 Q860,500 860,940 Q860,950 857.5,955 Q855,950 855,940 Q855,500 850,0"
+            fill="#440000" />
+        <path class="streak s4 black-cursor" d="M250,0 L265,0 Q257,200 257,490 Q257,500 255,505 Q253,500 253,490 Q253,200 250,0"
+            fill="#770505" />
+        <path class="streak s5 black-cursor" d="M400,0 L415,0 Q407,600 407,890 Q407,900 405,905 Q403,900 403,890 Q403,600 400,0"
+            fill="#550000" />
+        <path class="streak s6 black-cursor" d="M680,0 L700,0 Q690,450 690,740 Q690,750 687.5,755 Q685,750 685,740 Q685,450 680,0"
+            fill="#990a0a" />
+        <path class="streak s7 black-cursor" d="M920,0 L930,0 Q925,150 925,390 Q925,400 923.5,405 Q922,400 922,390 Q922,150 920,0"
+            fill="#600000" />
     </svg>
     <script>
         const prepareSurprise = () => {
             const surprise = document.getElementById("surprise");
             const audio = new Audio("https://www.myinstants.com/media/sounds/echo3b.mp3");
+            audio.currentTime = 0
 
             // Randomly trigger surprise between 2.5s and 10s after disturb
             const randomTime = 2500 + Math.floor(Math.random() * 7500);
 
             setTimeout(() => {
                 surprise.style.backgroundImage = "url('https://static.wikia.nocookie.net/villains/images/1/1b/Troodontid.jpg')";
-                audio.play();
-
                 // Remove image after audio ends
                 audio.onended = () => { surprise.style.backgroundImage = ""; };
+
+                audio.play();
             }, randomTime);
         };
 
