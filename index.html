@@ -16,31 +16,24 @@
 
         #text {
             position: absolute;
-            top: 0;
-            left: 0;
-            height: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100vw;
-            padding-top: 30vh;
-            font-size: 4.2rem;
-            line-height: 1;
-            overflow: visible !important;
-            color: black;
+            padding: 200px 0;
+            font-size: 5rem;
+            color: #880808;
             text-align: center;
-            z-index: 1;
+            z-index: 3;
             pointer-events: none;
         }
 
         #bird-box {
             width: 400px;
             height: 400px;
-            cursor: pointer;
-            z-index: 1;
+            margin-top: 20vw;
+            z-index: 3;
             position: relative;
-        }
-
-        body,
-        #bird-box {
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23880808'><path d='M26.256 12.016c-0.234-0.35-0.569-0.663-1.019-0.912-0.91-0.503-1.792-0.468-2.518-0.117l0-0.003c-1.967 0.954-3.883 1.407-5.813 1.749-0.499-0.189-0.659-0.563-0.316-1.212 1.18-1.134 2.564-2.049 3.963-2.522 1.138-0.149 2.040-1.066 2.386-2.144 1.462-0.323 3.206-0.193 4.289 0.984-0.705-4.241-3.153-4.71-5.359-4.179-0.074-0.049-0.15-0.096-0.232-0.141-1.912-1.057-3.698 0.26-4.173 1.897-0.368 0.961-0.811 1.868-1.324 2.719-2.184 1.952-4.255 1.186-5.852-0.973-1.233-1.77-2.318-4.081-2.937-6.257h-6.281v4.337c3.526 1.653 8.709 7.788 7.595 9.588-1.244 0.606-2.6 1.117-4.137 1.62-0.172 0.037-0.338 0.091-0.497 0.161-0.012 0.004-0.023 0.007-0.035 0.011l0.003 0.003c-1.339 0.605-2.171 2.282-1.722 3.694-1.209 2.376-1.1 5.505 3.645 6.325-1.373-1.301-1.678-3.007-1.198-4.391 1.454 0.18 2.653-0.9 3.046-2.197 0.518-1.319 1.327-2.504 2.609-2.907 1.385-0.435 5.582 1.236 7.67 4.729 0.194 0.604 0.622 1.159 1.347 1.559 0.711 0.393 1.397 0.465 2.003 0.319 1.172 1.27 2.158 3.197 1.692 5.011 3.374-3.034 2.293-5.762 0.557-7.656 0.142-1.041-0.247-2.134-1.427-2.787-0.584-0.323-1.155-0.423-1.682-0.362-0.976 0.007-2.104-0.174-3.122-0.538-1.388-0.987-1.297-1.93-0.154-2.543 1.709-0.164 3.4 0.379 4.736 1.070 0.124 0.094 0.26 0.183 0.409 0.266 1.62 0.896 3.107 0.128 3.826-1.102 1.354 0.327 2.583 1.561 3.377 3.051 1.392-4.274-0.881-5.916-3.359-6.15z'/></svg>") 0 0, auto;
         }
 
         .bird-svg {
@@ -53,20 +46,6 @@
             stroke: #880808;
             transform-origin: 50px 55px;
             animation: flap 0.1s infinite alternate ease-in-out;
-        }
-
-        .joker-grin {
-            fill: none;
-            stroke: #880808;
-            stroke-width: 3;
-            stroke-linecap: round;
-            filter: blur(0.5px);
-        }
-
-        .joker-teeth {
-            fill: none;
-            stroke: #F5F5F5;
-            stroke-width: 1.5;
         }
 
         @keyframes flap {
@@ -98,23 +77,68 @@
 
         #blood-wrapper {
             position: absolute;
-            top: -110vh;
+            bottom: -110vh;
             left: 0;
             width: 100vw;
             height: 110vh;
-            z-index: 0;
-            pointer-events: none;
-            transition: top 5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            z-index: 2;
+            pointer-events: all;
+            transition: bottom 4s cubic-bezier(0.2, 0.8, 0.2, 1) 3s;
         }
 
-        .blood-active {
-            top: -25vh !important;
-            pointer-events: auto !important;
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23000000'><path d='M26.256 12.016c-0.234-0.35-0.569-0.663-1.019-0.912-0.91-0.503-1.792-0.468-2.518-0.117l0-0.003c-1.967 0.954-3.883 1.407-5.813 1.749-0.499-0.189-0.659-0.563-0.316-1.212 1.18-1.134 2.564-2.049 3.963-2.522 1.138-0.149 2.040-1.066 2.386-2.144 1.462-0.323 3.206-0.193 4.289 0.984-0.705-4.241-3.153-4.71-5.359-4.179-0.074-0.049-0.15-0.096-0.232-0.141-1.912-1.057-3.698 0.26-4.173 1.897-0.368 0.961-0.811 1.868-1.324 2.719-2.184 1.952-4.255 1.186-5.852-0.973-1.233-1.77-2.318-4.081-2.937-6.257h-6.281v4.337c3.526 1.653 8.709 7.788 7.595 9.588-1.244 0.606-2.6 1.117-4.137 1.62-0.172 0.037-0.338 0.091-0.497 0.161-0.012 0.004-0.023 0.007-0.035 0.011l0.003 0.003c-1.339 0.605-2.171 2.282-1.722 3.694-1.209 2.376-1.1 5.505 3.645 6.325-1.373-1.301-1.678-3.007-1.198-4.391 1.454 0.18 2.653-0.9 3.046-2.197 0.518-1.319 1.327-2.504 2.609-2.907 1.385-0.435 5.582 1.236 7.67 4.729 0.194 0.604 0.622 1.159 1.347 1.559 0.711 0.393 1.397 0.465 2.003 0.319 1.172 1.27 2.158 3.197 1.692 5.011 3.374-3.034 2.293-5.762 0.557-7.656 0.142-1.041-0.247-2.134-1.427-2.787-0.584-0.323-1.155-0.423-1.682-0.362-0.976 0.007-2.104-0.174-3.122-0.538-1.388-0.987-1.297-1.93-0.154-2.543 1.709-0.164 3.4 0.379 4.736 1.070 0.124 0.094 0.26 0.183 0.409 0.266 1.62 0.896 3.107 0.128 3.826-1.102 1.354 0.327 2.583 1.561 3.377 3.051 1.392-4.274-0.881-5.916-3.359-6.15z'/></svg>") 0 0, auto !important;
+        #blood-wrapper.blood-active {
+            bottom: -90vh !important;
         }
 
-        .blood-active~#bird-box {
-            pointer-events: none !important;
+        #blood-streaks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: all;
+        }
+
+        body.is-disturbed .streak {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        .streak {
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: top;
+            will-change: transform;
+            transition-property: transform, opacity;
+        }
+
+        .s1 {
+            transition: transform 4.0s cubic-bezier(0.4, 0, 0.2, 1) 0.5s, opacity 0.5s;
+        }
+
+        .s2 {
+            transition: transform 3.2s cubic-bezier(0.4, 0, 0.2, 1) 1.2s, opacity 0.5s;
+        }
+
+        .s3 {
+            transition: transform 5.0s cubic-bezier(0.4, 0, 0.2, 1) 0.3s, opacity 0.5s;
+        }
+
+        .s4 {
+            transition: transform 3.0s cubic-bezier(0.4, 0, 0.2, 1) 1.8s, opacity 0.5s;
+        }
+
+        .s5 {
+            transition: transform 5.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s, opacity 0.5s;
+        }
+
+        .s6 {
+            transition: transform 3.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s, opacity 0.5s;
+        }
+
+        .s7 {
+            transition: transform 2.8s cubic-bezier(0.4, 0, 0.2, 1) 2.2s, opacity 0.5s;
         }
 
         #surprise {
@@ -127,33 +151,20 @@
             background-position: center;
             z-index: -2;
         }
+
+        .red-cursor,
+        .red-cursor * {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23880808'><path d='M26.256 12.016c-0.234-0.35-0.569-0.663-1.019-0.912-0.91-0.503-1.792-0.468-2.518-0.117l0-0.003c-1.967 0.954-3.883 1.407-5.813 1.749-0.499-0.189-0.659-0.563-0.316-1.212 1.18-1.134 2.564-2.049 3.963-2.522 1.138-0.149 2.040-1.066 2.386-2.144 1.462-0.323 3.206-0.193 4.289 0.984-0.705-4.241-3.153-4.71-5.359-4.179-0.074-0.049-0.15-0.096-0.232-0.141-1.912-1.057-3.698 0.26-4.173 1.897-0.368 0.961-0.811 1.868-1.324 2.719-2.184 1.952-4.255 1.186-5.852-0.973-1.233-1.77-2.318-4.081-2.937-6.257h-6.281v4.337c3.526 1.653 8.709 7.788 7.595 9.588-1.244 0.606-2.6 1.117-4.137 1.62-0.172 0.037-0.338 0.091-0.497 0.161-0.012 0.004-0.023 0.007-0.035 0.011l0.003 0.003c-1.339 0.605-2.171 2.282-1.722 3.694-1.209 2.376-1.1 5.505 3.645 6.325-1.373-1.301-1.678-3.007-1.198-4.391 1.454 0.18 2.653-0.9 3.046-2.197 0.518-1.319 1.327-2.504 2.609-2.907 1.385-0.435 5.582 1.236 7.67 4.729 0.194 0.604 0.622 1.159 1.347 1.559 0.711 0.393 1.397 0.465 2.003 0.319 1.172 1.27 2.158 3.197 1.692 5.011 3.374-3.034 2.293-5.762 0.557-7.656 0.142-1.041-0.247-2.134-1.427-2.787-0.584-0.323-1.155-0.423-1.682-0.362-0.976 0.007-2.104-0.174-3.122-0.538-1.388-0.987-1.297-1.93-0.154-2.543 1.709-0.164 3.4 0.379 4.736 1.070 0.124 0.094 0.26 0.183 0.409 0.266 1.62 0.896 3.107 0.128 3.826-1.102 1.354 0.327 2.583 1.561 3.377 3.051 1.392-4.274-0.881-5.916-3.359-6.15z'/></svg>") 0 0, auto;
+        }
+
+        .black-cursor,
+        .black-cursor * {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='%23000000'><path d='M26.256 12.016c-0.234-0.35-0.569-0.663-1.019-0.912-0.91-0.503-1.792-0.468-2.518-0.117l0-0.003c-1.967 0.954-3.883 1.407-5.813 1.749-0.499-0.189-0.659-0.563-0.316-1.212 1.18-1.134 2.564-2.049 3.963-2.522 1.138-0.149 2.040-1.066 2.386-2.144 1.462-0.323 3.206-0.193 4.289 0.984-0.705-4.241-3.153-4.71-5.359-4.179-0.074-0.049-0.15-0.096-0.232-0.141-1.912-1.057-3.698 0.26-4.173 1.897-0.368 0.961-0.811 1.868-1.324 2.719-2.184 1.952-4.255 1.186-5.852-0.973-1.233-1.77-2.318-4.081-2.937-6.257h-6.281v4.337c3.526 1.653 8.709 7.788 7.595 9.588-1.244 0.606-2.6 1.117-4.137 1.62-0.172 0.037-0.338 0.091-0.497 0.161-0.012 0.004-0.023 0.007-0.035 0.011l0.003 0.003c-1.339 0.605-2.171 2.282-1.722 3.694-1.209 2.376-1.1 5.505 3.645 6.325-1.373-1.301-1.678-3.007-1.198-4.391 1.454 0.18 2.653-0.9 3.046-2.197 0.518-1.319 1.327-2.504 2.609-2.907 1.385-0.435 5.582 1.236 7.67 4.729 0.194 0.604 0.622 1.159 1.347 1.559 0.711 0.393 1.397 0.465 2.003 0.319 1.172 1.27 2.158 3.197 1.692 5.011 3.374-3.034 2.293-5.762 0.557-7.656 0.142-1.041-0.247-2.134-1.427-2.787-0.584-0.323-1.155-0.423-1.682-0.362-0.976 0.007-2.104-0.174-3.122-0.538-1.388-0.987-1.297-1.93-0.154-2.543 1.709-0.164 3.4 0.379 4.736 1.070 0.124 0.094 0.26 0.183 0.409 0.266 1.62 0.896 3.107 0.128 3.826-1.102 1.354 0.327 2.583 1.561 3.377 3.051 1.392-4.274-0.881-5.916-3.359-6.15z'/></svg>") 0 0, auto !important;
+        }
     </style>
 </head>
 
-<body>
-    <script>
-        const prepareSurprise = () => {
-            const surprise = document.getElementById("surprise")
-            const audio = new Audio("https://www.myinstants.com/media/sounds/echo3b.mp3")
-            audio.currentTime = 0
-            audio.addEventListener("ended", () => {
-                surprise.style.backgroundImage = "";
-            })
-
-            setTimeout(() => {
-                surprise.style.backgroundImage = "url('https://static.wikia.nocookie.net/villains/images/1/1b/Troodontid.jpg')";
-                audio.play()
-            }, 2500 + Math.floor(Math.random() * 1e10))
-        }
-        disturbed = false
-        document.getElementById("bird-box").addEventListener("mouseenter", (e) => {
-            if (!disturbed) {
-                disturbed = true
-                e.target.querySelector("svg").classList.add("is-flying")
-                prepareSurprise()
-            }
-        })
-    </script>
+<body class="red-cursor">
     <div id="surprise"></div>
     <div id="text">
         T&#x337;&#x33f;&#x346;&#x315;&#x30e;&#x342;&#x33e;&#x313;&#x301;&#x314;&#x329;&#x35c;&#x318;&#x33b;&#x32e;h&#x338;&#x344;&#x30c;&#x313;&#x30d;&#x302;&#x33c;&#x31c;&#x32d;&#x321;&#x332;&#x355;&#x359;&#x359;&#x31f;&#x332;&#x32d;&#x34e;&#x32b;&#x35c;e&#x335;&#x309;&#x352;&#x311;&#x312;&#x300;&#x315;&#x342;&#x312;&#x315;&#x30c;&#x306;&#x33f;&#x324;&#x332;&#x347;&#x32e;&#x319;&#x32b;&#x318;
@@ -161,27 +172,16 @@
         &#x336;&#x33d;&#x350;&#x321;&#x33c;&#x322;&#x339;&#x316;n&#x337;&#x315;&#x351;&#x33e;&#x30c;&#x33e;&#x352;&#x33e;&#x340;&#x351;&#x34a;&#x346;&#x312;&#x33f;&#x32b;e&#x338;&#x351;&#x356;e&#x334;&#x30e;&#x313;&#x350;&#x35b;&#x30d;&#x311;&#x35d;&#x300;&#x351;&#x33b;&#x31d;&#x324;d&#x334;&#x358;&#x341;&#x344;&#x30f;&#x303;&#x30b;&#x344;&#x30e;&#x306;&#x344;&#x30e;&#x306;&#x309;&#x340;&#x345;&#x359;&#x327;&#x356;&#x317;s&#x338;&#x346;&#x33b;&#x32d;&#x355;&#x318;&#x322;&#x34d;&#x322;&#x33b;&#x32b;&#x31c;
         &#x338;&#x360;&#x359;&#x31d;&#x348;&#x32c;&#x355;&#x31e;&#x321;&#x31c;&#x323;&#x331;&#x349;&#x31c;&#x330;&#x318;b&#x335;&#x303;&#x30d;&#x357;&#x352;&#x322;&#x331;&#x318;&#x332;&#x33a;l&#x336;&#x301;&#x30d;&#x33e;&#x342;&#x310;&#x344;&#x302;&#x308;&#x312;&#x300;&#x322;&#x333;&#x317;&#x316;&#x325;&#x32f;&#x34e;&#x317;o&#x335;&#x309;&#x312;&#x307;&#x317;&#x32a;&#x319;&#x345;&#x355;&#x32a;&#x323;&#x324;&#x333;&#x32d;&#x347;&#x354;&#x33a;&#x35a;o&#x338;&#x30d;&#x341;&#x343;&#x30e;&#x34b;&#x30d;&#x31b;&#x304;&#x35d;&#x357;&#x305;&#x310;&#x347;&#x321;d&#x335;&#x33f;&#x35d;&#x304;&#x33d;&#x347;&#x329;&#x345;&#x31d;&#x32f;&#x316;&#x32c;
     </div>
-    <svg id="blood-wrapper" viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,0 L1000,0 L1000,850 
-            C950,850 920,950 880,880 
-            C840,810 800,980 750,900 
-            C700,820 650,1000 580,920 
-            S450,1000 380,900 
-            C300,800 250,980 180,900 
-            C120,820 80,950 0,850 Z" fill="#880808" />
-    </svg>
-    <div id="bird-box" onmouseenter="
-         this.querySelector('svg').classList.add('is-flying');
-         document.getElementById('blood-wrapper').classList.add('blood-active');
-         ">
+    <div id="bird-box">
         <svg class="bird-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 40 C65 40, 75 55, 50 75 C25 55, 35 40, 50 40 Z" fill="#880808" />
             <circle cx="42" cy="46" r="4" fill="black" />
             <circle cx="42" cy="46" r="1.5" fill="#F5F5F5" />
             <circle cx="58" cy="46" r="4" fill="black" />
             <circle cx="58" cy="46" r="1.5" fill="#F5F5F5" />
-            <path class="joker-grin" d="M30 55 Q50 75, 70 55" />
-            <path class="joker-teeth" d="M35 58 L37 63 L40 59 L43 65 L47 60 L51 66 L55 61 L59 67 L63 60 L65 63" />
+            <path stroke="#880808" stroke-width="3" stroke-linecap="round" fill="none" d="M30 55 Q50 75, 70 55" />
+            <path stroke="#F5F5F5" stroke-width="1.5" fill="none"
+                d="M35 58 L37 63 L40 59 L43 65 L47 60 L51 66 L55 61 L59 67 L63 60 L65 63" />
             <g class="wing">
                 <path d="M50 55 C30 55, 10 40, 30 30 C40 35, 50 45, 50 55 Z" />
             </g>
@@ -190,7 +190,65 @@
             </g>
         </svg>
     </div>
+    <svg id="blood-wrapper" class="black-cursor" viewBox="0 0 1000 1000" preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,1000 L1000,1000 L1000,150 
+        C950,150 920,50 880,120 
+        C840,190 800,20 750,100 
+        C700,180 650,0 580,80 
+        S450,0 380,100 
+        C300,200 250,20 180,100 
+        C120,180 80,50 0,150 Z" fill="#880808" />
+    </svg>
 
+    <svg id="blood-streaks" viewBox="0 0 1000 1000" preserveAspectRatio="none" shape-rendering="geometricPrecision"
+        xmlns="http://www.w3.org/2000/svg">
+        <path class="streak s1 black-cursor" d="M100,0 L130,0 Q115,400 115,800 L110,800 Q110,400 100,0"
+            fill="#660000" />
+        <path class="streak s2 black-cursor" class="black-cursor"
+            d="M500,0 L540,0 Q520,300 520,700 L515,700 Q515,300 500,0" fill="#880808" />
+        <path class="streak s3 black-cursor" d="M850,0 L870,0 Q860,500 860,950 L855,950 Q855,500 850,0"
+            fill="#440000" />
+        <path class="streak s4 black-cursor" d="M250,0 L265,0 Q257,200 257,500 L253,500 Q253,200 250,0"
+            fill="#770505" />
+        <path class="streak s5 black-cursor" d="M400,0 L415,0 Q407,600 407,900 L403,900 Q403,600 400,0"
+            fill="#550000" />
+        <path class="streak s6 black-cursor" d="M680,0 L700,0 Q690,450 690,750 L685,750 Q685,450 680,0"
+            fill="#990a0a" />
+        <path class="streak s7 black-cursor" d="M920,0 L930,0 Q925,150 925,400 L922,400 Q922,150 920,0"
+            fill="#600000" />
+    </svg>
+    <script>
+        const prepareSurprise = () => {
+            const surprise = document.getElementById("surprise");
+            const audio = new Audio("https://www.myinstants.com/media/sounds/echo3b.mp3");
+
+            // Randomly trigger surprise between 2.5s and 10s after disturb
+            const randomTime = 2500 + Math.floor(Math.random() * 7500);
+
+            setTimeout(() => {
+                surprise.style.backgroundImage = "url('https://static.wikia.nocookie.net/villains/images/1/1b/Troodontid.jpg')";
+                audio.play();
+
+                // Remove image after audio ends
+                audio.onended = () => { surprise.style.backgroundImage = ""; };
+            }, randomTime);
+        };
+
+        let disturbed = false;
+        const birdBox = document.getElementById("bird-box");
+
+        birdBox.addEventListener("mouseenter", () => {
+            if (!disturbed) {
+                disturbed = true;
+                birdBox.querySelector("svg").classList.add("is-flying");
+                document.body.classList.add("is-disturbed");
+                document.getElementById("blood-wrapper").classList.add("blood-active");
+                birdBox.querySelector("svg").classList.add("is-flying");
+                prepareSurprise();
+            }
+        });
+    </script>
 </body>
 
 </html>
