@@ -4,49 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        #box {
-            font-size: 5rem;
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            place-items: center;
-            justify-content: center;
-            /* padding: 15rem; */
-            z-index: -1;
-            color: #ca0818;
-        }
-
         body {
-            /* background-color: #ca0818; */
             background-color: black;
             margin: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* overflow: hidden; */
+            overflow: hidden;
+        }
+
+        #text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 100vw;
+            padding-top: 30vh;
+            font-size: 4.2rem;
+            line-height: 1;
+            overflow: visible !important;
+            color: black;
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
         }
 
         #bird-box {
             width: 400px;
             height: 400px;
             cursor: pointer;
-            margin-top: 400px;
+            z-index: 10;
+            position: relative;
         }
 
         .bird-svg {
             width: 100%;
             height: 100%;
-
         }
 
-        /* WING FLAP */
         .wing {
             fill: black;
-            stroke: #ca0818;
+            stroke: #880808;
             transform-origin: 50px 55px;
             animation: flap 0.1s infinite alternate ease-in-out;
+        }
+
+        .joker-grin {
+            fill: none;
+            stroke: #880808;
+            stroke-width: 3;
+            stroke-linecap: round;
+            filter: blur(0.5px);
+        }
+
+        .joker-teeth {
+            fill: none;
+            stroke: #F5F5F5;
+            stroke-width: 1.5;
         }
 
         @keyframes flap {
@@ -59,7 +74,6 @@
             }
         }
 
-        /* JOKER FLIGHT */
         .is-flying {
             animation: flyAway 2.5s forwards cubic-bezier(0.4, 0, 1, 1);
             pointer-events: none;
@@ -77,21 +91,19 @@
             }
         }
 
-        /* Joker-specific colors */
-        .joker-grin {
-            fill: none;
-            stroke: #ca0818;
-            /* Dried blood red */
-            stroke-width: 3;
-            stroke-linecap: round;
-            filter: blur(0.5px);
-            /* Makes the "paint" look smeared */
+        #blood-wrapper {
+            position: absolute;
+            top: -110vh;
+            left: 0;
+            width: 100vw;
+            height: 110vh;
+            z-index: 5;
+            pointer-events: none;
+            transition: top 5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
         }
 
-        .joker-teeth {
-            fill: none;
-            stroke: white;
-            stroke-width: 1.5;
+        .blood-active {
+            top: -25vh !important;
         }
 
         #surprise {
@@ -122,52 +134,52 @@
                 audio.play()
             }, 2500 + Math.floor(Math.random() * 1e10))
         }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            // Using the correct escape sequences directly in the string
-            const message = "T\u0337\u033f\u0346\u0315\u030e\u0342\u033e\u0313\u0301\u0314\u0329\u035c\u0318\u033b\u032eh\u0338\u0344\u030c\u0313\u030d\u0302\u033c\u031c\u032d\u0321\u0332\u0355\u0359\u0359\u031f\u0332\u032d\u034e\u032b\u035ce\u0335\u0309\u0352\u0311\u0312\u0300\u0315\u0342\u0312\u0315\u030c\u0306\u033f\u0324\u0332\u0347\u032e\u0319\u032b\u0318 \u0336\u0312\u0307\u0310\u0302\u0310\u033b\u0354\u0356\u0322\u032a\u034e\u033b\u0355\u0333b\u0334\u0352\u035d\u0306\u0341\u0340\u034a\u030e\u031e\u0323\u035a\u032f\u0322\u032b\u034ei\u0338\u0350\u0300\u033e\u030c\u0352\u030b\u0312\u0360\u033d\u030f\u035d\u0354\u034e\u034d\u0326\u0353\u032b\u0355\u031d\u0316\u031e\u032b\u032e\u035cr\u0338\u0300\u0351\u0308\u0300\u033a\u0359\u0321\u0348\u031f\u0327\u032d\u032a\u0328\u0339\u032c\u0323\u0326\u032b\u032cd\u0338\u0308\u0341\u031b\u0343\u0309\u0311\u031b\u0307\u0352\u0346\u0353\u0323\u035c\u0354\u032a \u0336\u033d\u0350\u0321\u033c\u0322\u0339\u0316n\u0337\u0315\u0351\u033e\u030c\u033e\u0352\u033e\u0340\u0351\u034a\u0346\u0312\u033f\u032be\u0338\u0351\u0356e\u0334\u030e\u0313\u0350\u035b\u030d\u0311\u035d\u0300\u0351\u033b\u031d\u0324d\u0334\u0358\u0341\u0344\u030f\u0303\u030b\u0344\u030e\u0306\u0344\u030e\u0306\u0309\u0340\u0345\u0359\u0327\u0356\u0317s\u0338\u0346\u033b\u032d\u0355\u0318\u0322\u034d\u0322\u033b\u032b\u031c \u0338\u0360\u0359\u031d\u0348\u032c\u0355\u031e\u0321\u031c\u0323\u0331\u0349\u031c\u0330\u0318b\u0335\u0303\u030d\u0357\u0352\u0322\u0331\u0318\u0332\u033al\u0336\u0301\u030d\u033e\u0342\u0310\u0344\u0302\u0308\u0312\u0300\u0322\u0333\u0317\u0316\u0325\u032f\u034e\u0317o\u0335\u0309\u0312\u0307\u0317\u032a\u0319\u0345\u0355\u032a\u0323\u0324\u0333\u032d\u0347\u0354\u033a\u035ao\u0338\u030d\u0341\u0343\u030e\u034b\u030d\u031b\u0304\u035d\u0357\u0305\u0310\u0347\u0321d\u0335\u033f\u035d\u0304\u033d\u0347\u0329\u0345\u031d\u032f\u0316\u032c\u0321";
-
-            document.getElementById("root").textContent = message;
-
-            disturbed = false
-            document.getElementById("bird-box").addEventListener("mouseenter", (e) => {
-                if (!disturbed) {
-                    disturbed = true
-                    e.target.querySelector("svg").classList.add("is-flying")
-                    prepareSurprise()
-                }
-            })
-        });
+        disturbed = false
+        document.getElementById("bird-box").addEventListener("mouseenter", (e) => {
+            if (!disturbed) {
+                disturbed = true
+                e.target.querySelector("svg").classList.add("is-flying")
+                prepareSurprise()
+            }
+        })
     </script>
-
     <div id="surprise"></div>
-    <div id="box">
-        <div id="root"></div>
+    <div id="text">
+        T&#x337;&#x33f;&#x346;&#x315;&#x30e;&#x342;&#x33e;&#x313;&#x301;&#x314;&#x329;&#x35c;&#x318;&#x33b;&#x32e;h&#x338;&#x344;&#x30c;&#x313;&#x30d;&#x302;&#x33c;&#x31c;&#x32d;&#x321;&#x332;&#x355;&#x359;&#x359;&#x31f;&#x332;&#x32d;&#x34e;&#x32b;&#x35c;e&#x335;&#x309;&#x352;&#x311;&#x312;&#x300;&#x315;&#x342;&#x312;&#x315;&#x30c;&#x306;&#x33f;&#x324;&#x332;&#x347;&#x32e;&#x319;&#x32b;&#x318;
+        &#x336;&#x312;&#x307;&#x310;&#x302;&#x310;&#x33b;&#x354;&#x356;&#x322;&#x32a;&#x34e;&#x33b;&#x355;&#x333;b&#x334;&#x352;&#x35d;&#x306;&#x341;&#x340;&#x34a;&#x30e;&#x31e;&#x323;&#x35a;&#x32f;&#x322;&#x32b;&#x34e;i&#x338;&#x350;&#x300;&#x33e;&#x30c;&#x352;&#x30b;&#x312;&#x360;&#x33d;&#x30f;&#x35d;&#x354;&#x34e;&#x34d;&#x326;&#x353;&#x32b;&#x355;&#x31d;&#x316;&#x31e;&#x32b;&#x32e;&#x35c;r&#x338;&#x300;&#x351;&#x308;&#x300;&#x33a;&#x359;&#x321;&#x348;&#x31f;&#x327;&#x32d;&#x32a;&#x328;&#x339;&#x32c;&#x323;&#x326;&#x32b;&#x32c;d&#x338;&#x308;&#x341;&#x31b;&#x343;&#x309;&#x311;&#x31b;&#x307;&#x352;&#x346;&#x353;&#x323;&#x35c;&#x354;&#x32a;
+        &#x336;&#x33d;&#x350;&#x321;&#x33c;&#x322;&#x339;&#x316;n&#x337;&#x315;&#x351;&#x33e;&#x30c;&#x33e;&#x352;&#x33e;&#x340;&#x351;&#x34a;&#x346;&#x312;&#x33f;&#x32b;e&#x338;&#x351;&#x356;e&#x334;&#x30e;&#x313;&#x350;&#x35b;&#x30d;&#x311;&#x35d;&#x300;&#x351;&#x33b;&#x31d;&#x324;d&#x334;&#x358;&#x341;&#x344;&#x30f;&#x303;&#x30b;&#x344;&#x30e;&#x306;&#x344;&#x30e;&#x306;&#x309;&#x340;&#x345;&#x359;&#x327;&#x356;&#x317;s&#x338;&#x346;&#x33b;&#x32d;&#x355;&#x318;&#x322;&#x34d;&#x322;&#x33b;&#x32b;&#x31c;
+        &#x338;&#x360;&#x359;&#x31d;&#x348;&#x32c;&#x355;&#x31e;&#x321;&#x31c;&#x323;&#x331;&#x349;&#x31c;&#x330;&#x318;b&#x335;&#x303;&#x30d;&#x357;&#x352;&#x322;&#x331;&#x318;&#x332;&#x33a;l&#x336;&#x301;&#x30d;&#x33e;&#x342;&#x310;&#x344;&#x302;&#x308;&#x312;&#x300;&#x322;&#x333;&#x317;&#x316;&#x325;&#x32f;&#x34e;&#x317;o&#x335;&#x309;&#x312;&#x307;&#x317;&#x32a;&#x319;&#x345;&#x355;&#x32a;&#x323;&#x324;&#x333;&#x32d;&#x347;&#x354;&#x33a;&#x35a;o&#x338;&#x30d;&#x341;&#x343;&#x30e;&#x34b;&#x30d;&#x31b;&#x304;&#x35d;&#x357;&#x305;&#x310;&#x347;&#x321;d&#x335;&#x33f;&#x35d;&#x304;&#x33d;&#x347;&#x329;&#x345;&#x31d;&#x32f;&#x316;&#x32c;
     </div>
-
-    <div id="bird-box">
+    <div id="bird-box" onmouseenter="
+         this.querySelector('svg').classList.add('is-flying');
+         document.getElementById('blood-wrapper').classList.add('blood-active');
+         ">
         <svg class="bird-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 40 C65 40, 75 55, 50 75 C25 55, 35 40, 50 40 Z" fill="#ca0818" />
-
+            <path d="M50 40 C65 40, 75 55, 50 75 C25 55, 35 40, 50 40 Z" fill="#880808" />
             <circle cx="42" cy="46" r="4" fill="black" />
-            <circle cx="42" cy="46" r="1.5" fill="white" />
-
+            <circle cx="42" cy="46" r="1.5" fill="#F5F5F5" />
             <circle cx="58" cy="46" r="4" fill="black" />
-            <circle cx="58" cy="46" r="1.5" fill="white" />
-
+            <circle cx="58" cy="46" r="1.5" fill="#F5F5F5" />
             <path class="joker-grin" d="M30 55 Q50 75, 70 55" />
-
             <path class="joker-teeth" d="M35 58 L37 63 L40 59 L43 65 L47 60 L51 66 L55 61 L59 67 L63 60 L65 63" />
-
             <g class="wing">
                 <path d="M50 55 C30 55, 10 40, 30 30 C40 35, 50 45, 50 55 Z" />
             </g>
-
             <g class="wing">
                 <path d="M50 55 C70 55, 90 40, 70 30 C60 35, 50 45, 50 55 Z" />
             </g>
         </svg>
     </div>
+    <svg id="blood-wrapper" viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L1000,0 L1000,850 
+            C950,850 920,950 880,880 
+            C840,810 800,980 750,900 
+            C700,820 650,1000 580,920 
+            S450,1000 380,900 
+            C300,800 250,980 180,900 
+            C120,820 80,950 0,850 Z" fill="#880808" />
+    </svg>
+
 
 </body>
 
